@@ -22,16 +22,18 @@ module "sqs" {
 }
 
 module "rds" {
-  source                  = "./modules/rds"
-  db_name                = var.db_name
-  db_user                = var.db_user
-  db_password            = var.db_password
-  db_instance_class      = var.db_instance_class
-  db_allocated_storage   = var.db_allocated_storage
-  db_max_allocated_storage = var.db_max_allocated_storage
-  subnet_ids             = module.vpc.private_subnets
-  security_groups        = [module.security_groups.infra_sg_id]
-  kms_key_arn            = module.kms.kms_key_arn
+  source                    = "./modules/rds"
+  db_identifier             = "video-processor-db"
+  db_name                   = var.db_name
+  db_username               = var.db_username
+  db_password               = var.db_password
+  db_instance_class         = var.db_instance_class
+  db_allocated_storage      = var.db_allocated_storage
+  db_max_allocated_storage  = var.db_max_allocated_storage
+  subnet_ids                = module.vpc.private_subnets
+  security_group_ids        = [module.security_groups.infra_sg_id]
+  kms_key_id                = module.kms.kms_key_arn
+  environment               = var.environment
 }
 
 module "ecr" {
