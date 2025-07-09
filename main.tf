@@ -24,16 +24,15 @@ module "sqs" {
 module "rds" {
   source                    = "./modules/rds"
   db_identifier             = "video-processor-db"
-  db_name                   = var.db_name
-  db_username               = var.db_username
-  db_password               = var.db_password
-  db_instance_class         = var.db_instance_class
-  db_allocated_storage      = var.db_allocated_storage
-  db_max_allocated_storage  = var.db_max_allocated_storage
+  db_name                   = "video-processor-db"
+  db_username               = "postgres"
+  db_password               = "1234"
+  db_instance_class         = "db.t3.micro"
+  db_allocated_storage      = 5
+  db_max_allocated_storage  = 20
   subnet_ids                = module.vpc.private_subnets
   security_group_ids        = [module.security_groups.infra_sg_id]
   kms_key_id                = module.kms.kms_key_arn
-  environment               = var.environment
 }
 
 module "ecr" {
@@ -52,8 +51,6 @@ module "ecs" {
       module.ecr.repository_url_worker,
       module.ecr.repository_url_api
   ]
-  execution_role_arn = var.ecs_execution_role_arn
-  task_role_arn = var.ecs_task_role_arn
   subnet_ids = module.vpc.public_subnets
   security_group_ids = [module.security_groups.infra_sg_id]
   tg_load_balancer = module.load_balancer.target_group_arn
@@ -61,13 +58,11 @@ module "ecs" {
 
 module "cognito" {
   source      = "./modules/cognito"
-  environment = var.environment
-  aws_region  = var.aws_region
+  aws_region  = "us-east-1"
 }
 
 module "api_gateway" {
   source         = "./modules/apigateway"
-  environment    = var.environment
   target_port    = 8080
   target_ip      = module.ecs.api_task_ip
   authorizer_id  = module.cognito.api_authorizer_id

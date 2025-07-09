@@ -48,11 +48,6 @@ variable "subnet_ids" {
   type        = list(string)
 }
 
-variable "environment" {
-  description = "Ambiente de deploy (dev, prod)"
-  type        = string
-}
-
 variable "kms_key_id" {
   description = "ID da chave KMS para criptografia"
   type        = string

@@ -8,11 +8,6 @@ variable "target_port" {
   type        = number
 }
 
-variable "environment" {
-  description = "Ambiente de execução"
-  type        = string
-}
-
 variable "authorizer_id" {
   description = "ID do JWT Authorizer"
   type        = string

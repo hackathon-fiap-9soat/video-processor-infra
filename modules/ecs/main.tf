@@ -9,8 +9,8 @@ resource "aws_ecs_task_definition" "worker" {
   requires_compatibilities = ["FARGATE"]
   cpu                      = "512"
   memory                   = "1024"
-  execution_role_arn       = var.execution_role_arn
-  task_role_arn            = var.task_role_arn
+  execution_role_arn       = "arn:aws:iam::594861858504:role/LabRole"
+  task_role_arn            = "arn:aws:iam::594861858504:role/LabRole"
 
   container_definitions = jsonencode([
     {
@@ -48,8 +48,8 @@ resource "aws_ecs_task_definition" "api" {
   requires_compatibilities = ["FARGATE"]
   cpu                      = "512"
   memory                   = "1024"
-  execution_role_arn       = var.execution_role_arn
-  task_role_arn            = var.task_role_arn
+  execution_role_arn       = "arn:aws:iam::594861858504:role/LabRole"
+  task_role_arn            = "arn:aws:iam::594861858504:role/LabRole"
 
   container_definitions = jsonencode([
     {
