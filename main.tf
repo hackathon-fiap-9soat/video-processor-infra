@@ -55,7 +55,7 @@ module "ecs" {
   execution_role_arn = var.ecs_execution_role_arn
   task_role_arn = var.ecs_task_role_arn
   subnet_ids = module.vpc.public_subnets
-  security_groups_ids = var.security_groups_ids
+  security_group_ids = [module.security_groups.infra_sg_id]
   tg_load_balancer = module.load_balancer.target_group_arn
 }
 
