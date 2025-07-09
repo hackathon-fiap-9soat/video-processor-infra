@@ -1,28 +1,28 @@
 module "vpc" {
-  source = "../modules/vpc"
+  source = "./modules/vpc"
 }
 
 module "security_groups" {
-  source     = "../modules/security_groups"
+  source     = "./modules/security_groups"
   vpc_id     = module.vpc.vpc_id
 }
 
 module "kms" {
-  source = "../modules/kms"
+  source = "./modules/kms"
 }
 
 module "s3" {
-  source   = "../modules/s3"
+  source   = "./modules/s3"
   kms_key_arn = module.kms.kms_key_arn
 }
 
 module "sqs" {
-  source   = "../modules/sqs"
+  source   = "./modules/sqs"
   kms_key_arn = module.kms.kms_key_arn
 }
 
 module "rds" {
-  source                  = "../modules/rds"
+  source                  = "./modules/rds"
   db_name                = var.db_name
   db_user                = var.db_user
   db_password            = var.db_password
@@ -35,17 +35,17 @@ module "rds" {
 }
 
 module "ecr" {
-  source     = "../modules/ecr"
+  source     = "./modules/ecr"
 }
 
 module "load_balancer" {
-  source      = "../modules/load_balancer"
+  source      = "./modules/load_balancer"
   vpc_id = module.vpc.vpc_id
   public_subnet_ids  = module.vpc.public_subnets
 }
 
 module "ecs" {
-  source     = "../modules/ecs"
+  source     = "./modules/ecs"
   images_url = [
       module.ecr.repository_url_worker,
       module.ecr.repository_url_api
@@ -58,13 +58,13 @@ module "ecs" {
 }
 
 module "cognito" {
-  source      = "../modules/cognito"
+  source      = "./modules/cognito"
   environment = var.environment
   aws_region  = var.aws_region
 }
 
 module "api_gateway" {
-  source         = "../modules/apigateway"
+  source         = "./modules/apigateway"
   environment    = var.environment
   target_port    = 8080
   target_ip      = module.ecs.api_task_ip
