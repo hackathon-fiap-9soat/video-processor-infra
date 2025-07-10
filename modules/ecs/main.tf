@@ -49,8 +49,8 @@ resource "aws_ecs_task_definition" "api" {
   requires_compatibilities = ["FARGATE"]
   cpu                      = "512"
   memory                   = "1024"
-  execution_role_arn       = "arn:aws:iam::594861858504:role/LabRole"
-  task_role_arn            = "arn:aws:iam::594861858504:role/LabRole"
+  execution_role_arn       = "arn:aws:iam::553859338902:role/LabRole"
+  task_role_arn            = "arn:aws:iam::553859338902:role/LabRole"
 
   container_definitions = jsonencode([
     {
@@ -82,7 +82,7 @@ resource "aws_ecs_service" "api" {
   load_balancer {
     target_group_arn = var.tg_load_balancer
     container_name   = "video-processor-api"
-    container_port   = 3000
+    container_port   = 8080
   }
 
   lifecycle {

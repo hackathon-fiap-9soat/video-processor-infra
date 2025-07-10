@@ -25,7 +25,7 @@ module "rds" {
   source                    = "./modules/rds"
   db_identifier             = "video-processor-db"
   db_username               = "postgres"
-  db_password               = "1234"
+  db_password               = "12345678"
   db_instance_class         = "db.t3.micro"
   db_allocated_storage      = 5
   db_max_allocated_storage  = 20

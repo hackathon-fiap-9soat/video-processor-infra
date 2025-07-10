@@ -24,7 +24,7 @@ resource "aws_apigatewayv2_stage" "default" {
 resource "aws_apigatewayv2_integration" "alb" {
   api_id             = aws_apigatewayv2_api.api.id
   integration_type   = "HTTP_PROXY"
-  integration_uri    = var.lb_dns_name
+  integration_uri    = "http://${var.lb_dns_name}"
   integration_method = "ANY"
   payload_format_version = "1.0"
 }
