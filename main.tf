@@ -24,7 +24,6 @@ module "sqs" {
 module "rds" {
   source                    = "./modules/rds"
   db_identifier             = "video-processor-db"
-  db_name                   = "video-processor-db"
   db_username               = "postgres"
   db_password               = "1234"
   db_instance_class         = "db.t3.micro"
@@ -65,7 +64,6 @@ module "api_gateway" {
   source         = "./modules/apigateway"
   target_port    = 8080
   target_ip      = module.ecs.api_task_ip
-  authorizer_id  = module.cognito.api_authorizer_id
   audience       = [module.cognito.user_pool_client_id]
   issuer         = module.cognito.user_pool_issuer
   lb_dns_name    = module.load_balancer.alb_dns_name

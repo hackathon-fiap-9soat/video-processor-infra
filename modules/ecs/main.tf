@@ -34,6 +34,7 @@ resource "aws_ecs_service" "worker" {
   task_definition = aws_ecs_task_definition.worker.arn
 
   network_configuration {
+    subnets = var.subnet_ids
     security_groups  = var.security_group_ids
   }
 

@@ -8,12 +8,6 @@ variable "target_port" {
   type        = number
 }
 
-variable "authorizer_id" {
-  description = "ID do JWT Authorizer"
-  type        = string
-  default     = ""
-}
-
 variable "audience" {
   type        = list(string)
   description = "Lista de audiences do JWT (client_id do Cognito)"

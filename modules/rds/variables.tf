@@ -21,12 +21,6 @@ variable "db_max_allocated_storage" {
   default     = 10
 }
 
-variable "db_name" {
-  description = "Nome do banco PostgreSQL"
-  type        = string
-  default     = "fastfood"
-}
-
 variable "db_username" {
   description = "Usuário do banco"
   type        = string

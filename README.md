@@ -11,7 +11,6 @@ Este projeto define a infraestrutura escalável para um sistema de processamento
 - **Amazon RDS** (PostgreSQL com criptografia KMS)
 - **Amazon S3** (armazenamento de vídeos)
 - **Amazon SQS** (mensageria)
-- **Amazon SNS** (notificação por email)
 - **AWS KMS** (gerenciamento de chaves)
 - **Security Groups**
 
@@ -23,7 +22,6 @@ infra/
 ├── modules/
 │   ├── rds/
 │   ├── s3/
-│   ├── sns/
 │   ├── sqs/
 │   ├── kms/
 │   ├── vpc/
