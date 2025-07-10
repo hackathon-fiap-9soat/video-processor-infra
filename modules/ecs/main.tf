@@ -48,7 +48,7 @@ resource "aws_ecs_task_definition" "api" {
   requires_compatibilities = ["FARGATE"]
   cpu                      = "512"
   memory                   = "1024"
-  execution_role_arn       = "arn:aws:iam::553859338902:role/LabRole"
+  execution_role_arn       = "arn:aws:iam::594861858504:role/LabRole"
 
   container_definitions = jsonencode([
     {
