@@ -8,5 +8,5 @@ resource "aws_cognito_user_pool_client" "main" {
   generate_secret                       = true
   allowed_oauth_flows_user_pool_client  = true
   allowed_oauth_flows                   = ["client_credentials"]
-  allowed_oauth_scopes                  = ["openid", "email"]
+  allowed_oauth_scopes                  = ["openid"]
 }

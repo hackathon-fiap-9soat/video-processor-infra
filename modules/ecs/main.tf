@@ -10,7 +10,6 @@ resource "aws_ecs_task_definition" "worker" {
   cpu                      = "512"
   memory                   = "1024"
   execution_role_arn       = "arn:aws:iam::594861858504:role/LabRole"
-  task_role_arn            = "arn:aws:iam::594861858504:role/LabRole"
 
   container_definitions = jsonencode([
     {
@@ -50,7 +49,6 @@ resource "aws_ecs_task_definition" "api" {
   cpu                      = "512"
   memory                   = "1024"
   execution_role_arn       = "arn:aws:iam::553859338902:role/LabRole"
-  task_role_arn            = "arn:aws:iam::553859338902:role/LabRole"
 
   container_definitions = jsonencode([
     {
