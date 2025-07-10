@@ -1,8 +1,3 @@
-variable "target_ip" {
-  description = "IP público da task ECS da API"
-  type        = string
-}
-
 variable "target_port" {
   description = "Porta do container ECS (API)"
   type        = number

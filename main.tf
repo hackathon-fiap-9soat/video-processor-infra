@@ -63,7 +63,6 @@ module "cognito" {
 module "api_gateway" {
   source         = "./modules/apigateway"
   target_port    = 8080
-  target_ip      = module.ecs.api_task_ip
   audience       = [module.cognito.user_pool_client_id]
   issuer         = module.cognito.user_pool_issuer
   lb_dns_name    = module.load_balancer.alb_dns_name
